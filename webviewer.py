@@ -22,7 +22,7 @@ def _main():
     parser.process(app)    
    
     if len(parser.positionalArguments()) == 0:
-        print(parser.showHelp())
+        parser.showHelp()
         
     url = QUrl(parser.positionalArguments()[0])
     

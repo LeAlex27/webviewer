@@ -1,7 +1,8 @@
-import QtQuick 2.13
-import QtQuick.Window 2.13
-import QtWebEngine 1.9
+import QtQuick 2.14
+import QtQuick.Window 2.14
+import QtWebEngine 1.10
 import Qt.labs.platform 1.1
+
 
 Window {
     id: window
