@@ -18,7 +18,7 @@ def _main():
     parser.setApplicationDescription("Displays a website in a window.")
     parser.addHelpOption()
     parser.addVersionOption()
-    parser.addPositionalArgument("URL", "address of the website to show")
+    parser.addPositionalArgument("URL", "Address of the website to show.")
     parser.process(app)    
    
     if len(parser.positionalArguments()) == 0:
