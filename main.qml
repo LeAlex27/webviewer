@@ -14,7 +14,7 @@ Window {
     WebEngineView {
         id: webEngineView
         anchors.fill: parent
-        url: website.url
+        url: website
     }
     
     SystemTrayIcon {

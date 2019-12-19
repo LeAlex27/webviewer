@@ -7,22 +7,7 @@ from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWebEngine import QtWebEngine
 
 
-class Url(QObject):
-    def __init__(self, url=''):
-        super(Url, self).__init__()
-        self._url = url
-        
-    def _url(self):
-        return self._url
-    
-    @Signal
-    def url_changed(self):
-        pass
-    
-    url = Property(QUrl, _url, notify=url_changed)
-
-
-if __name__ == '__main__':
+def _main():
     QtWebEngine.initialize()
     
     app = QApplication(sys.argv)
@@ -35,10 +20,13 @@ if __name__ == '__main__':
     parser.addPositionalArgument("url", "help message")
     parser.process(app)    
    
-    url = Url(QUrl(parser.positionalArguments()[0]))
+    url = QUrl(parser.positionalArguments()[0])
     
     appEngine = QQmlApplicationEngine()
     appEngine.rootContext().setContextProperty("website", url)
     appEngine.load('main.qml')
     
     sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    _main()
