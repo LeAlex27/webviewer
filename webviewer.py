@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-from PySide2.QtCore import QObject, QUrl, Signal, Property, QCommandLineParser
+from PySide2.QtCore import QUrl, QCommandLineParser
 from PySide2.QtWidgets import QApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWebEngine import QtWebEngine
