@@ -23,6 +23,8 @@ class Url(QObject):
 
 
 if __name__ == '__main__':
+    QtWebEngine.initialize()
+    
     app = QApplication(sys.argv)
     app.setApplicationName("webviewer")
     app.setApplicationVersion("0.0.0.1")
@@ -31,10 +33,8 @@ if __name__ == '__main__':
     parser.addHelpOption()
     parser.addVersionOption()
     parser.addPositionalArgument("url", "help message")
-    parser.process(app)
-    
-    QtWebEngine.initialize()
-    
+    parser.process(app)    
+   
     url = Url(QUrl(parser.positionalArguments()[0]))
     
     appEngine = QQmlApplicationEngine()
