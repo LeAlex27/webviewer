@@ -15,11 +15,15 @@ def _main():
     app.setApplicationVersion("0.0.0.1")
     
     parser = QCommandLineParser()
+    parser.setApplicationDescription("Displays a website in a window.")
     parser.addHelpOption()
     parser.addVersionOption()
-    parser.addPositionalArgument("url", "help message")
+    parser.addPositionalArgument("URL", "address of the website to show")
     parser.process(app)    
    
+    if len(parser.positionalArguments()) == 0:
+        print(parser.showHelp())
+        
     url = QUrl(parser.positionalArguments()[0])
     
     appEngine = QQmlApplicationEngine()
