@@ -5,8 +5,14 @@ from PySide2.QtCore import QUrl, QCommandLineParser
 from PySide2.QtWidgets import QApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWebEngine import QtWebEngine
+import re
 
 import webviewer.resources
+
+
+def has_no_scheme(url):
+    match = re.search("\\w+:", url)
+    return (match is None) or (match.span()[0] > 0)
 
 
 def _main():
@@ -26,8 +32,12 @@ def _main():
     if len(parser.positionalArguments()) == 0:
         parser.showHelp()
         
-    url = QUrl(parser.positionalArguments()[0])
-    
+    rawUrl = parser.positionalArguments()[0]
+    if has_no_scheme(rawUrl):
+        print("The given url has no scheme. Https is assumed.")
+        rawUrl = "https://" + rawUrl
+    url = QUrl(rawUrl)
+
     appEngine = QQmlApplicationEngine()
     appEngine.rootContext().setContextProperty("website", url)
     appEngine.load('qrc:/main.qml')
