@@ -31,6 +31,10 @@ Window {
                 }
             }
             MenuItem {
+                text: qsTr("Hide window")
+                onTriggered: window.hide()
+            }
+            MenuItem {
                 text: qsTr("Quit")
                 onTriggered: Qt.quit()
             }

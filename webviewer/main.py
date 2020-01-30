@@ -6,6 +6,8 @@ from PySide2.QtWidgets import QApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWebEngine import QtWebEngine
 
+import webviewer.resources
+
 
 def _main():
     QtWebEngine.initialize()
@@ -28,9 +30,10 @@ def _main():
     
     appEngine = QQmlApplicationEngine()
     appEngine.rootContext().setContextProperty("website", url)
-    appEngine.load('main.qml')
+    appEngine.load('qrc:/main.qml')
     
     sys.exit(app.exec_())
+
 
 if __name__ == '__main__':
     _main()
