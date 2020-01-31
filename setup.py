@@ -1,7 +1,5 @@
-import os
-from setuptools import setup, find_packages, Command
-from pathlib import Path
 import subprocess
+from setuptools import setup, find_packages, Command
 
 
 class RccCommand(Command):

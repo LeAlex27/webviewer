@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 
 import sys
-from PySide2.QtCore import QUrl, QCommandLineParser
+import re
+
+from PySide2.QtCore import Qt, QUrl, QCommandLineParser, QSettings
 from PySide2.QtWidgets import QApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWebEngine import QtWebEngine
-import re
 
 import webviewer.resources
+from webviewer import __version__
 
 
 def has_no_scheme(url):
@@ -16,11 +18,14 @@ def has_no_scheme(url):
 
 
 def _main():
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QtWebEngine.initialize()
     
     app = QApplication(sys.argv)
     app.setApplicationName("webviewer")
-    app.setApplicationVersion("0.0.0.1")
+    app.setApplicationVersion(__version__)
+    QSettings.setDefaultFormat(QSettings.IniFormat)
+    settings = QSettings("webviewer", "webviewer")
     
     parser = QCommandLineParser()
     parser.setApplicationDescription("Displays a website in a window.")
