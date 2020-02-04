@@ -56,7 +56,13 @@ ext: \x22The site \x22\
 uestNames[featur\
 e]\x0a        }\x0a   \
  }\x0a}\x0a\
-\x00\x00\x06p\
+\x00\x00\x001\
+[\
+Controls]\x0aStyle=\
+Material\x0a\x0a[Mater\
+ial]\x0aTheme=Dark\x0a\
+\
+\x00\x00\x07\xfa\
 i\
 mport QtQuick 2.\
 14\x0aimport QtQuic\
@@ -105,62 +111,87 @@ Dialog.feature =\
  feature\x0a       \
      featurePerm\
 issionDialog.ope\
-n()\x0a        }\x0a  \
-  }\x0a\x0a    Feature\
-PermissionDialog\
- {\x0a        id: f\
-eaturePermission\
-Dialog\x0a        a\
-nchors.centerIn:\
- parent\x0a\x0a       \
- onAccepted: {\x0a \
-           webEn\
-gineView.grantFe\
-aturePermission(\
-origin, feature,\
- true)\x0a        }\
-\x0a\x0a        onReje\
-cted: {\x0a        \
-    webEngineVie\
-w.grantFeaturePe\
-rmission(origin,\
- feature, false)\
-\x0a        }\x0a    }\
-\x0a    \x0a    System\
-TrayIcon {\x0a     \
-   visible: true\
-\x0a        icon.so\
-urce: webEngineV\
-iew.icon\x0a\x0a      \
-  menu: Menu {\x0a \
-           MenuI\
-tem {\x0a          \
-      text: qsTr\
-(\x22Show window\x22)\x0a\
+n()\x0a        }\x0a\x0a \
+       Connectio\
+ns {\x0a           \
+ target: webEngi\
+neView.profile\x0a\x0a\
+            onPr\
+esentNotificatio\
+n: {\x0a           \
+     systemTrayI\
+con.showMessage(\
+notification.tit\
+le,\x0a            \
                 \
-onTriggered: {\x0a \
+               n\
+otification.mess\
+age,\x0a           \
                 \
-   window.show()\
-\x0a               \
-     window.rais\
-e()\x0a            \
-    }\x0a          \
-  }\x0a            \
-MenuItem {\x0a     \
-           text:\
- qsTr(\x22Hide wind\
-ow\x22)\x0a           \
-     onTriggered\
-: window.hide()\x0a\
+                \
+webEngineView.ic\
+on,\x0a            \
+                \
+               2\
+000)\x0a           \
+ }\x0a        }\x0a   \
+ }\x0a\x0a    FeatureP\
+ermissionDialog \
+{\x0a        id: fe\
+aturePermissionD\
+ialog\x0a        an\
+chors.centerIn: \
+parent\x0a\x0a        \
+onAccepted: {\x0a  \
+          webEng\
+ineView.grantFea\
+turePermission(o\
+rigin, feature, \
+true)\x0a        }\x0a\
+\x0a        onRejec\
+ted: {\x0a         \
+   webEngineView\
+.grantFeaturePer\
+mission(origin, \
+feature, false)\x0a\
+        }\x0a    }\x0a\
+    \x0a    SystemT\
+rayIcon {\x0a      \
+  id: systemTray\
+Icon\x0a        vis\
+ible: true\x0a     \
+   icon.source: \
+webEngineView.ic\
+on\x0a\x0a        menu\
+: Menu {\x0a       \
+     MenuItem {\x0a\
+                \
+text: qsTr(\x22Show\
+ window\x22)\x0a      \
+          onTrig\
+gered: {\x0a       \
+             win\
+dow.show()\x0a     \
+               w\
+indow.raise()\x0a  \
+              }\x0a\
             }\x0a  \
           MenuIt\
 em {\x0a           \
      text: qsTr(\
-\x22Quit\x22)\x0a        \
-        onTrigge\
-red: Qt.quit()\x0a \
-           }\x0a   \
-     }\x0a    }\x0a}\x0a\
+\x22Hide window\x22)\x0a \
+               o\
+nTriggered: wind\
+ow.hide()\x0a      \
+      }\x0a        \
+    MenuItem {\x0a \
+               t\
+ext: qsTr(\x22Quit\x22\
+)\x0a              \
+  onTriggered: Q\
+t.quit()\x0a       \
+     }\x0a        }\
+\x0a    }\x0a}\x0a\
 "
 
 qt_resource_name = b"\
@@ -169,6 +200,11 @@ qt_resource_name = b"\
 \x00F\
 \x00e\x00a\x00t\x00u\x00r\x00e\x00P\x00e\x00r\x00m\x00i\x00s\x00s\x00i\x00o\x00n\
 \x00D\x00i\x00a\x00l\x00o\x00g\x00.\x00q\x00m\x00l\
+\x00\x15\
+\x08\x1e\x16f\
+\x00q\
+\x00t\x00q\x00u\x00i\x00c\x00k\x00c\x00o\x00n\x00t\x00r\x00o\x00l\x00s\x002\x00.\
+\x00c\x00o\x00n\x00f\
 \x00\x08\
 \x08\x01Z\x5c\
 \x00m\
@@ -176,10 +212,12 @@ qt_resource_name = b"\
 "
 
 qt_resource_struct = b"\
-\x00\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x01\
+\x00\x00\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x01\
 \x00\x00\x00\x00\x00\x00\x00\x00\
+\x00\x00\x00l\x00\x00\x00\x00\x00\x01\x00\x00\x03/\
+\x00\x00\x01p\x0d\x89\xdf\xa9\
 \x00\x00\x00<\x00\x00\x00\x00\x00\x01\x00\x00\x02\xfa\
-\x00\x00\x01o\xfc\xd0\xac\xdc\
+\x00\x00\x01p\x0d\x8c\xd1\x05\
 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\
 \x00\x00\x01o\xfc\xcf\x9c\x85\
 "

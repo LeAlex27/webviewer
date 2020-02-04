@@ -23,9 +23,11 @@ def _main():
     
     app = QApplication(sys.argv)
     app.setApplicationName("webviewer")
+    app.setOrganizationName("webviewer")
+    app.setOrganizationDomain("webviewer")
     app.setApplicationVersion(__version__)
+
     QSettings.setDefaultFormat(QSettings.IniFormat)
-    settings = QSettings("webviewer", "webviewer")
     
     parser = QCommandLineParser()
     parser.setApplicationDescription("Displays a website in a window.")

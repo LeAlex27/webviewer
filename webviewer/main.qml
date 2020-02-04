@@ -32,6 +32,17 @@ Window {
             featurePermissionDialog.feature = feature
             featurePermissionDialog.open()
         }
+
+        Connections {
+            target: webEngineView.profile
+
+            onPresentNotification: {
+                systemTrayIcon.showMessage(notification.title,
+                                           notification.message,
+                                           webEngineView.icon,
+                                           2000)
+            }
+        }
     }
 
     FeaturePermissionDialog {
@@ -48,6 +59,7 @@ Window {
     }
     
     SystemTrayIcon {
+        id: systemTrayIcon
         visible: true
         icon.source: webEngineView.icon
 
