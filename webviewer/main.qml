@@ -33,6 +33,11 @@ Window {
             featurePermissionDialog.open()
         }
 
+        onNewViewRequested: {
+            if (request.userInitiated)
+                Qt.openUrlExternally(request.requestedUrl);
+        }
+
         Connections {
             target: webEngineView.profile
 
