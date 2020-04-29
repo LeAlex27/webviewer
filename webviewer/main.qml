@@ -28,9 +28,9 @@ Window {
         url: website
 
         onFeaturePermissionRequested: {
-            featurePermissionDialog.origin = securityOrigin.toString()
-            featurePermissionDialog.feature = feature
-            featurePermissionDialog.open()
+            featurePermissionDialog.origin = securityOrigin.toString();
+            featurePermissionDialog.feature = feature;
+            featurePermissionDialog.open();
         }
 
         onNewViewRequested: {
@@ -45,7 +45,7 @@ Window {
                 systemTrayIcon.showMessage(notification.title,
                                            notification.message,
                                            webEngineView.icon,
-                                           2000)
+                                           2000);
             }
         }
     }
@@ -55,11 +55,11 @@ Window {
         anchors.centerIn: parent
 
         onAccepted: {
-            webEngineView.grantFeaturePermission(origin, feature, true)
+            webEngineView.grantFeaturePermission(origin, feature, true);
         }
 
         onRejected: {
-            webEngineView.grantFeaturePermission(origin, feature, false)
+            webEngineView.grantFeaturePermission(origin, feature, false);
         }
     }
     
@@ -72,17 +72,17 @@ Window {
             MenuItem {
                 text: qsTr("Show window")
                 onTriggered: {
-                    window.show()
-                    window.raise()
+                    window.show();
+                    window.raise();
                 }
             }
             MenuItem {
                 text: qsTr("Hide window")
-                onTriggered: window.hide()
+                onTriggered: window.hide();
             }
             MenuItem {
                 text: qsTr("Quit")
-                onTriggered: Qt.quit()
+                onTriggered: Qt.quit();
             }
         }
     }
