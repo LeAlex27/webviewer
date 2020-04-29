@@ -4,10 +4,10 @@
 ``python setup.py rcc``
 to compile ``main.qml`` into a python module.
 
-2. For an editable (develeoper) installations, install with
+2. For an editable (developer) installations, install with
 ``pip install --user -e [path to checked out repository]``
-Alternatively, for a nornal installation, run without ``-e``.
+Alternatively, for a normal installation, run without ``-e``.
 
 
 ## Run
-From the command line, run as ``python3 -m webviewer.main [URL]``
+From the command line, run as ``python3 -m webviewer [URL]``
