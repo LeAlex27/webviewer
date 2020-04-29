@@ -23,9 +23,9 @@ Dialog {
         anchors.fill: parent
 
         Label {
-            text: "The site " + origin + " is requesting "
+            text: qsTr("The site " + origin + " is requesting "
                   + "access for:\n"
-                  + featureRequestNames[feature]
+                  + featureRequestNames[feature])
         }
     }
 }
