@@ -85,5 +85,12 @@ Window {
                 onTriggered: Qt.quit();
             }
         }
+
+        onActivated: {
+            if (reason === SystemTrayIcon.Trigger) {
+                window.show();
+                window.raise();
+            }
+        }
     }
 }
