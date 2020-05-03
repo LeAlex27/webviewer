@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-import re
 
 from PySide2.QtCore import Qt, QUrl, QCommandLineParser, QSettings
 from PySide2.QtWidgets import QApplication
@@ -10,11 +9,6 @@ from PySide2.QtWebEngine import QtWebEngine
 
 import webviewer.resources
 from webviewer import __version__
-
-
-def has_no_scheme(url):
-    match = re.search("\\w+:", url)
-    return (match is None) or (match.span()[0] > 0)
 
 
 def _main():
@@ -39,11 +33,10 @@ def _main():
     if len(parser.positionalArguments()) == 0:
         parser.showHelp()
         
-    rawUrl = parser.positionalArguments()[0]
-    if has_no_scheme(rawUrl):
+    url = QUrl(parser.positionalArguments()[0])
+    if url.isRelative():
         print("The given url has no scheme. Https is assumed.")
-        rawUrl = "https://" + rawUrl
-    url = QUrl(rawUrl)
+        url.setScheme('https')
 
     appEngine = QQmlApplicationEngine()
     appEngine.rootContext().setContextProperty("website", url)
