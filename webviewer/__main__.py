@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import sys
 
 from PySide2.QtCore import Qt, QUrl, QCommandLineParser, QSettings
