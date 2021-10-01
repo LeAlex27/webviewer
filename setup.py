@@ -30,5 +30,5 @@ setup(name="webviewer",
       url="https://github.com/LeAlex27/webviewer",
       packages=find_packages(),
       python_requires=">=3.7",
-      install_requires=["PySide2>=5.14"],
+      install_requires=["PySide6>=6.2"],
       cmdclass={'rcc': RccCommand})

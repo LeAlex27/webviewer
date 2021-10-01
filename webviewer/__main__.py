@@ -1,9 +1,9 @@
 import sys
 
-from PySide2.QtCore import Qt, QUrl, QCommandLineParser, QSettings
-from PySide2.QtWidgets import QApplication
-from PySide2.QtQml import QQmlApplicationEngine
-from PySide2.QtWebEngine import QtWebEngine
+from PySide6.QtCore import Qt, QUrl, QCommandLineParser, QSettings
+from PySide6.QtWidgets import QApplication
+from PySide6.QtQml import QQmlApplicationEngine
+from PySide6.QtWebEngineQuick import QtWebEngineQuick
 
 import webviewer.resources
 from webviewer import __version__
@@ -11,7 +11,7 @@ from webviewer import __version__
 
 def _main():
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QtWebEngine.initialize()
+    QtWebEngineQuick.initialize()
     
     app = QApplication(sys.argv)
     app.setApplicationName("webviewer")
@@ -40,7 +40,7 @@ def _main():
     appEngine.rootContext().setContextProperty("website", url)
     appEngine.load('qrc:/main.qml')
     
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

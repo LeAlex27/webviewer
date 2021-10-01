@@ -1,6 +1,6 @@
-import QtQuick 2.14
-import QtQuick.Window 2.14
-import QtWebEngine 1.10
+import QtQuick
+import QtQuick.Window
+import QtWebEngine
 import Qt.labs.platform 1.1
 import Qt.labs.settings 1.0
 
@@ -33,7 +33,7 @@ Window {
             featurePermissionDialog.open();
         }
 
-        onNewViewRequested: {
+        onWebEngineNewWindowRequest: {
             if (request.userInitiated)
                 Qt.openUrlExternally(request.requestedUrl);
         }
