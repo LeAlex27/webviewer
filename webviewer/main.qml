@@ -28,10 +28,19 @@ Window {
         url: website
 
         Component.onCompleted: {
-            var newUserAgent = profile.httpUserAgent.replace(/QtWebEngine\/[0-9|.]* /, '')
-            console.log("user agent:", profile.httpUserAgent);
-            console.log("new user agent:", newUserAgent);
-            profile.httpUserAgent = newUserAgent;
+            if (stripUserAgent) {
+                console.log("stripping user agent of QtWebEngine information")
+                var newUserAgent = profile.httpUserAgent.replace(/QtWebEngine\/[0-9|.]* /, '')
+                console.log("user agent:", profile.httpUserAgent);
+                console.log("new user agent:", newUserAgent);
+                profile.httpUserAgent = newUserAgent;
+            }
+
+            if (storageName != "") {
+                profile.offTheRecord = false;
+                profile.storageName = storageName;
+                console.log("persistentStoragePath:", profile.persistentStoragePath)
+            }
         }
 
         onFeaturePermissionRequested: {
