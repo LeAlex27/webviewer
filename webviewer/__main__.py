@@ -10,7 +10,6 @@ from webviewer import __version__
 
 
 def _main():
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QtWebEngineQuick.initialize()
     
     app = QApplication(sys.argv)

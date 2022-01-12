@@ -33,15 +33,19 @@ Window {
             featurePermissionDialog.open();
         }
 
-        onWebEngineNewWindowRequest: {
+        /* onWebEngineNewWindowRequest: {
             if (request.userInitiated)
                 Qt.openUrlExternally(request.requestedUrl);
-        }
+        } */
 
         Connections {
             target: webEngineView.profile
 
-            onPresentNotification: {
+            /* onPresentNotification: systemTrayIcon.showMessage(notification.title,
+                                                              notification.message,
+                                                              webEngineView.icon,
+                                                              2000) */
+            function onPresentNotification(notification) {
                 systemTrayIcon.showMessage(notification.title,
                                            notification.message,
                                            webEngineView.icon,
@@ -54,13 +58,8 @@ Window {
         id: featurePermissionDialog
         anchors.centerIn: parent
 
-        onAccepted: {
-            webEngineView.grantFeaturePermission(origin, feature, true);
-        }
-
-        onRejected: {
-            webEngineView.grantFeaturePermission(origin, feature, false);
-        }
+        onAccepted: webEngineView.grantFeaturePermission(origin, feature, true)
+        onRejected: webEngineView.grantFeaturePermission(origin, feature, false)
     }
     
     SystemTrayIcon {
