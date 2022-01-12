@@ -27,6 +27,13 @@ Window {
         anchors.fill: parent
         url: website
 
+        Component.onCompleted: {
+            var newUserAgent = profile.httpUserAgent.replace(/QtWebEngine\/[0-9|.]* /, '')
+            console.log("user agent:", profile.httpUserAgent);
+            console.log("new user agent:", newUserAgent);
+            profile.httpUserAgent = newUserAgent;
+        }
+
         onFeaturePermissionRequested: {
             featurePermissionDialog.origin = securityOrigin.toString();
             featurePermissionDialog.feature = feature;
@@ -41,10 +48,6 @@ Window {
         Connections {
             target: webEngineView.profile
 
-            /* onPresentNotification: systemTrayIcon.showMessage(notification.title,
-                                                              notification.message,
-                                                              webEngineView.icon,
-                                                              2000) */
             function onPresentNotification(notification) {
                 systemTrayIcon.showMessage(notification.title,
                                            notification.message,
