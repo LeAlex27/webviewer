@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Window
 import QtWebEngine
-import Qt.labs.platform 1.1
-import Qt.labs.settings 1.0
+import Qt.labs.platform
+import Qt.labs.settings
 
 
 Window {
@@ -43,16 +43,16 @@ Window {
             }
         }
 
-        onFeaturePermissionRequested: {
+        onFeaturePermissionRequested: function(securityOrigin, feature) {
             featurePermissionDialog.origin = securityOrigin.toString();
             featurePermissionDialog.feature = feature;
             featurePermissionDialog.open();
         }
 
-        /* onWebEngineNewWindowRequest: {
+        onNewWindowRequested: function(request) {
             if (request.userInitiated)
                 Qt.openUrlExternally(request.requestedUrl);
-        } */
+        }
 
         Connections {
             target: webEngineView.profile
@@ -97,7 +97,7 @@ Window {
             }
         }
 
-        onActivated: {
+        onActivated: function(reason) {
             if (reason === SystemTrayIcon.Trigger) {
                 window.show();
                 window.raise();

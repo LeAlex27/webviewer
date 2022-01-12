@@ -11,6 +11,8 @@ from webviewer import __version__
 
 def _main():
     QApplication.setApplicationName("webviewer")
+    QApplication.setOrganizationName("webviewer")
+    QApplication.setOrganizationDomain("webviewer")
     QApplication.setApplicationVersion(__version__)
     QSettings.setDefaultFormat(QSettings.IniFormat)
     QtWebEngineQuick.initialize()

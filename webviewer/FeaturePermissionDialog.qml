@@ -24,8 +24,9 @@ Dialog {
 
         Label {
             text: qsTr("The site " + origin + " is requesting "
-                  + "access for:\n"
-                  + featureRequestNames[feature])
+                       + "the following feature:\n"
+                       + featureRequestNames[feature]
+                       + "\nDo you want to allow access to it?")
         }
     }
 }
