@@ -95,4 +95,9 @@ Window {
             }
         }
     }
+
+    onClosing: function(close) {
+        close.accepted = false;
+        hide();
+    }
 }
