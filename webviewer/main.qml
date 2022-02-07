@@ -66,6 +66,12 @@ Window {
         }
     }
 
+    SettingsDialog {
+        id: settingsDialog
+        webEngineProfile: webEngineView.profile
+        anchors.centerIn: parent
+    }
+
     FeaturePermissionDialog {
         id: featurePermissionDialog
         anchors.centerIn: parent
@@ -89,11 +95,15 @@ Window {
             }
             MenuItem {
                 text: qsTr("Hide window")
-                onTriggered: window.hide();
+                onTriggered: window.hide()
+            }
+            MenuItem {
+                text: qsTr("Settings")
+                onTriggered: settingsDialog.open()
             }
             MenuItem {
                 text: qsTr("Quit")
-                onTriggered: Qt.quit();
+                onTriggered: Qt.quit()
             }
         }
 
@@ -106,7 +116,9 @@ Window {
     }
 
     onClosing: function(close) {
-        close.accepted = false;
-        hide();
+        if (settingsDialog.minimizeOnClose) {
+            close.accepted = false;
+            hide();
+        }
     }
 }

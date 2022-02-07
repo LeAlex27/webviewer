@@ -2,6 +2,7 @@
 <qresource>
     <file>qtquickcontrols2.conf</file>
     <file>main.qml</file>
+    <file>SettingsDialog.qml</file>
     <file>FeaturePermissionDialog.qml</file>
 </qresource>
 </RCC>
